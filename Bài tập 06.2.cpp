@@ -14,10 +14,14 @@ public:
      return diemToan;
     }
 };
+// Lớp Sinh Viên đại diện cho một sinh viên với thông tin về tên và điểm các môn học. Với thuộc tính private là tên, điểm các môn học.
+//Thuộc tính public nhập, xuất, tính toán điểm sinh viên. 
 
 double SinhVien::DiemTB() {
     return (2 * diemToan + diemVan + diemAnh) / 4;
 }
+// Hàm tính điểm trung bình theo công thức: (2 * Toán + Văn + Anh) / 4
+
 void SinhVien::Nhap(){
 cin.ignore();
 cout<<"Vui long nhap Ho va Ten: ";
@@ -48,6 +52,7 @@ while(diemAnh<0||diemAnh>10){
     cin>>diemAnh;
 }
 }
+// Hàm nhập thông tin sinh viên, kiểm tra hợp lệ cho họ tên và điểm. Phải đúng các yêu cầu từ điểm. Kiểu dữ liệu tên, nếu sai thì phải nhập lại. 
 
 void SinhVien::Xuat() {
     cout << "Ho va Ten: " << HovaTen << endl;
@@ -67,11 +72,12 @@ void SinhVien::Xuat() {
      }
      cout<<endl;
 }
+// Hàm xuất thông tin sinh viên, bao gồm họ tên, điểm và học lực. Trong đó so sánh điểm học lực của sinh viên theo thang điểm và xếp loại sinh viên theo điểm TB đó. 
 
 class KiemTraSinhVien{
 private:
-    int n;
-    SinhVien *a;
+    int n; //Số lượng sinh viên
+    SinhVien *a; // Con trỏ mảng động để lưu danh sách sinh viên
 public:
     void Nhap();
     void Xuat();
@@ -80,23 +86,28 @@ public:
     void TuKhoa();
     ~KiemTraSinhVien();
 };
+// Định nghĩa lớp KiemTraSinhVien để quản lý danh sách sinh viên. Tạo các thao tác nhập, xuất, so sánh. 
 
 void KiemTraSinhVien::Nhap() {
     cout << "Nhap so luong thi sinh: ";
     cin >> n;
-    a = new SinhVien[n];
+    a = new SinhVien[n]; // Cấp phát bộ nhớ động cho mảng sinh viên
 
     for (int i = 0; i < n; i++) {
         cout << "\nThi Sinh thu " << i + 1 << ":" << endl;
         a[i].Nhap();
     }
 }
+// Hàm nhập danh sách sinh viên. Tạo mảng Sinh viên. 
+
 void KiemTraSinhVien::Xuat() {
     cout << "\nDanh Sach Thi Sinh: " << endl;
     for (int i = 0; i < n; i++) {
         a[i].Xuat();
     }
 }
+// Hàm xuất danh sách sinh viên. 
+
 void KiemTraSinhVien::TimKiem(){
     cout<<"\nThi Sinh co diem TB cao nhat: "<<endl;
     double xet = 0;
@@ -112,6 +123,7 @@ void KiemTraSinhVien::TimKiem(){
     }
    }
 }
+// Hàm tìm sinh viên có điểm trung bình cao nhất. Duyệt các phần tử gán, xem phần tử nào có điểm trung bình lớn hơn thì xuất phần tử đó. 
 
 void KiemTraSinhVien::ToanThapNhat(){
 cout<<"\nThi Sinh co diem Toan thap nhat: "<<endl;
@@ -128,6 +140,7 @@ cout<<"\nThi Sinh co diem Toan thap nhat: "<<endl;
     }
    }
 }
+// Tìm sinh viên có điểm Toán thấp nhất. Duyệt các phần tử gán, phần tử nào có điểm toán thấp nhất thì xuất phần tử đó. 
 
 void KiemTraSinhVien::TuKhoa(){
 cin.ignore();
@@ -167,10 +180,13 @@ for(int j = 0; j <= Ten.length() - tuKhoa.length(); j++) {
         cout << "Khong tim thay!"<<endl;
     }
 }
+// Tìm kiếm sinh viên theo từ khóa trong tên. Chuyển từ khóa về kiểu in thường, và chuyển các tên sinh viên về kiểu in thường để dễ so sánh.
+// So sánh bằng cách duyệt 2 vòng lặp và lưu kết quả vào biến KT, nếu đúng thì xuất kết quả. Sai thì xuất "Không tìm thấy."
 
 KiemTraSinhVien::~KiemTraSinhVien() {
     delete[] a;
 }
+// Hàm hủy giải phóng bộ nhớ động
 
 int main(){
 KiemTraSinhVien ds;
@@ -181,3 +197,4 @@ KiemTraSinhVien ds;
     ds.TuKhoa();
     return 0;
 }
+//Gọi biến, các hàm để tiến hành, nhập xuất và xử lý dữ liệu của chương trình quản lý sinh viên
