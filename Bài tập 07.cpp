@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class ChuyenBay {
-    friend class QuanLyChuyenBay;
+class ChuyenBay { 
+    friend class QuanLyChuyenBay; // Cho phép lớp QuanLyChuyenBay truy cập các thành viên private
 private:
     string maCB, noiDi, noiDen;
     int ngay, thang, nam, gio, phut;
@@ -13,6 +13,7 @@ public:
     bool KiemTraMaCB(string ma);
     bool KiemTraNoi(string noi);
 };
+// Lớp ChuyenBay lưu trữ thông tin về một chuyến bay
 
 bool ChuyenBay::KiemTraNgayHopLe(int ngay, int thang, int nam) {
     vector<int> ngayThang = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
