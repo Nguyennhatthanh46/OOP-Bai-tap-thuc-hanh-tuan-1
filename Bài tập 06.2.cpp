@@ -2,7 +2,7 @@
 
 using namespace std;
 class SinhVien{
-    friend class KiemTraSinhVien;
+    friend class KiemTraSinhVien;//Cho phép lớp KiemTraSinhVien truy cập các thuộc tính của lớp SinhVien. 
 private:
     string HovaTen;
     double diemToan,diemVan,diemAnh;
